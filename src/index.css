@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #0c0d10;
+  --bg-panel: #131518;
+  --text-main: #e0e0e0;
+  --text-muted: #6b7280;
+  --accent: #d4a557; /* Gold accent */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text-main);
+  background: var(--bg-main);
+  font-family: 'Inter', sans-serif;
+  overflow: hidden; /* Prevent body scroll */
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.panel {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(19, 21, 24, 0.95);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.section-title {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.editor-font {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem; /* text-sm equivalent */
+  line-height: 1.5rem; /* leading-6 */
+}
+
+/* Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Rhyme Highlights */
+.rhyme-word {
+  border-radius: 2px;
+  padding: 0 2px;
+  margin: 0 -2px;
+  background-color: transparent;
+  transition: all 0.2s;
+}
+
+/* Hip Hop Color Palettes - Muted & Classy */
+.rhyme-family-0 { color: #84cc16; background: rgba(132, 204, 22, 0.15); } /* Lime */
+.rhyme-family-1 { color: #facc15; background: rgba(250, 204, 21, 0.15); } /* Yellow */
+.rhyme-family-2 { color: #22d3ee; background: rgba(34, 211, 238, 0.15); } /* Cyan */
+.rhyme-family-3 { color: #f472b6; background: rgba(244, 114, 182, 0.15); } /* Pink */
+.rhyme-family-4 { color: #a78bfa; background: rgba(167, 139, 250, 0.15); } /* Purple */
+.rhyme-family-5 { color: #fb923c; background: rgba(251, 146, 60, 0.15); } /* Orange */
+
+/* Beat visualizer border override */
+.beat-border {
+  box-shadow: inset 0 0 0 1px rgba(212, 165, 87, 0.3); /* Gold */
+}
+
+.toggle-btn {
+    transition: all 0.2s ease;
+}
+.toggle-btn.active {
+    box-shadow: 0 0 10px -2px currentColor;
+}
+
+.assist-chip {
+    @apply text-[10px] px-2 py-1 bg-zinc-800/50 hover:bg-zinc-700/80 rounded border border-transparent hover:border-white/10 transition-all text-zinc-300 hover:text-white truncate text-center cursor-pointer select-none;
+}
+
+@keyframes rhymePulse {
+  0% { box-shadow: 0 0 0 rgba(0,0,0,0); }
+  50% { box-shadow: 0 0 5px rgba(255,255,255,0.2); }
+  100% { box-shadow: 0 0 0 rgba(0,0,0,0); }
+}
+
+.glow-hover {
+  transition: all 0.25s ease;
+}
+
+.glow-hover:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 16px rgba(0, 0, 0, 0.3);
+}
+
+.range-neon {
+  accent-color: var(--accent);
+}
+
+.transport-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 86px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: #1c1f25;
+  color: #eceef5;
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.toggle-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #171a20;
+  color: #d7dbe7;
+}
+
+.toggle-btn.active {
+  border-color: rgba(52, 179, 255, 0.75);
+  background: rgba(52, 179, 255, 0.18);
+  color: #e9f6ff;
+  box-shadow: 0 0 0.65rem rgba(52, 179, 255, 0.32);
+}
+
+.assist-chip {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #1a1d24;
+  color: #f4f7ff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.assist-chip:hover {
+  border-color: rgba(52, 179, 255, 0.65);
+  background: #242b36;
+}
+
+.transport-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.active-pulse {
+  animation: recPulse 1s ease-in-out infinite;
+}
+
+@keyframes recPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.beat-border {
+  animation: beatPulseBorder 0.22s ease-out;
+}
+
+@keyframes beatPulseBorder {
+  from {
+    box-shadow: inset 0 0 0 1px rgba(52, 179, 255, 0.65);
+  }
+  to {
+    box-shadow: inset 0 0 0 1px rgba(52, 179, 255, 0.05);
+  }
+}
